@@ -1,9 +1,13 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text, View } from 'react-native';
-const App = ()=>{
+
+import {Text, View} from 'react-native';
+
+const App = () => {
     return (
         <View>
-            <Text>This is Basic!</Text>
+            <StatusBar/>
+            <Text> Hi! I am Abhishant. </Text>
         </View>
     )
 }
