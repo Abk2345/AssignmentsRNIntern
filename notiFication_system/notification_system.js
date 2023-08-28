@@ -1,4 +1,5 @@
-// eject and run with react-native at night
+// react native notifee library
+// eject and run with react-native 
 
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, FlatList, TouchableOpacity } from 'react-native';
