@@ -1,0 +1,3 @@
+#Drawer navigation is already implemented in UI development part, so that is done there
+
+#other types of react navigation is also implemented in older projects within this folder
