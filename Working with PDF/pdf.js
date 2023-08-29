@@ -1,29 +1,43 @@
 import React from 'react';
-import { StyleSheet, Dimensions, View } from 'react-native';
+import { StyleSheet, Dimensions, View, TouchableOpacity, Text, Button } from 'react-native';
 import Pdf from 'react-native-pdf';
 
 export default class PDFExample extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mode: 'Portrait', // Default mode
+        };
+    }
+
+    handleModeChange = (mode) => {
+        this.setState({ mode });
+    };
+
     render() {
-      // online sources
+        //online source
         // const source = { uri: 'https://www.africau.edu/images/default/sample.pdf', cache: true };
       
-        // local pdf files
-        const source = require('./test.pdf');  
-        //const source = {uri:'bundle-assets://test.pdf' };
-        //const source = {uri:'file:///sdcard/test.pdf'};
-        //const source = {uri:"data:application/pdf;base64,JVBERi0xLjcKJc..."};
-        //const source = {uri:"content://com.example.blobs/xxxxxxxx-...?offset=0&size=xxx"};
-        //const source = {uri:"blob:xxxxxxxx-...?offset=0&size=xxx"};
+        //local source
+        const source = require('./test.pdf');
+        const { mode } = this.state;
 
+        const isPortrait = mode === 'Portrait';
+        const pdfWidth = isPortrait ? Dimensions.get('window').width : Dimensions.get('window').height;
+        const pdfHeight = isPortrait ? Dimensions.get('window').height : Dimensions.get('window').width;
+        console.log("Message: ", pdfHeight, pdfWidth);
         return (
             <View style={styles.container}>
+                <View style={styles.modeButtons}>
+                  <Button title="Landscape mode" onPress={()=>this.handleModeChange('Landscape')}></Button>
+                </View>
                 <Pdf
                     trustAllCerts={false}
                     source={source}
-                    onLoadComplete={(numberOfPages,filePath) => {
+                    onLoadComplete={(numberOfPages, filePath) => {
                         console.log(`Number of pages: ${numberOfPages}`);
                     }}
-                    onPageChanged={(page,numberOfPages) => {
+                    onPageChanged={(page, numberOfPages) => {
                         console.log(`Current page: ${page}`);
                     }}
                     onError={(error) => {
@@ -32,9 +46,10 @@ export default class PDFExample extends React.Component {
                     onPressLink={(uri) => {
                         console.log(`Link pressed: ${uri}`);
                     }}
-                    style={styles.pdf}/>
+                    style={{ width: pdfWidth, height: pdfHeight }}
+                />
             </View>
-        )
+        );
     }
 }
 
@@ -45,9 +60,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 25,
     },
-    pdf: {
-        flex:1,
-        width:Dimensions.get('window').width,
-        height:Dimensions.get('window').height,
-    }
+    modeButtons: {
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        marginBottom: 10,
+    },
 });
