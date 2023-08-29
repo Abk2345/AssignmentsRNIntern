@@ -8,7 +8,7 @@ import { TouchableHighlight, View, Text, Button } from 'react-native';
 
 
 const App = ()=>{
-
+// key details got from razorpay dashboard for the purpose od testing the app integration
 const KEY_ID = "rzp_test_cTBEzR9eskjkMU";
 const KEY_SECRET = "vvxT1crhIrvqZEgbpTWrGsJk";
   const payWithRazorpay = ()=>{
@@ -19,7 +19,7 @@ const KEY_SECRET = "vvxT1crhIrvqZEgbpTWrGsJk";
       key: 'rzp_test_cTBEzR9eskjkMU',
       amount: '5000', 
       name: 'Acme Corp',
-      order_id: 'order_DslnoIgkIDL8Zt',//Replace this with an order_id created using Orders API.
+      order_id: 'order_DslnoIgkIDL8Zt',
       prefill: {
         email: 'gaurav.kumar@example.com',
         contact: '9191919191',
@@ -28,10 +28,10 @@ const KEY_SECRET = "vvxT1crhIrvqZEgbpTWrGsJk";
       theme: {color: '#53a20e'}
     }
     RazorpayCheckout.open(options).then((data) => {
-      // handle success
+      // handling success
       alert(`Success: ${data.razorpay_payment_id}`);
     }).catch((error) => {
-      // handle failure
+      // handling failure
       alert(`Error: ${error.code} | ${error.description}`);
     });
   }

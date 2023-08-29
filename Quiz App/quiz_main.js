@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import QuestionScreen from './QuestionScreen';
 import { StatusBar } from 'expo-status-bar';
+
+// setting up quiz data
 const questions = [
   {
     question: 'What is the capital of France?',
@@ -22,6 +24,7 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [quizOver, setQuizOver] = useState(false);
 
+  // for updating time counter and integrating base case if time gets to Zero
   useEffect(() => {
     if (timeRemaining > 0) {
       const timer = setTimeout(() => {
@@ -44,6 +47,7 @@ const Header = () => {
   )
 }
 
+// going to next question in the quiz
   const moveToNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -53,6 +57,7 @@ const Header = () => {
     }
   };
 
+  // based on user's input, calculate how much they scored out of total questions in quiz
   const calculateScore = () => {
     const userScore = questions.reduce((acc, question, index) => {
       if (question.selectedOption === question.correctAnswer) {

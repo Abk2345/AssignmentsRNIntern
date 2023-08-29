@@ -1,4 +1,4 @@
-// store/index.js
+// access point for all of our redux stored states
 import { createStore } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';

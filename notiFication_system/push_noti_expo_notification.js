@@ -5,6 +5,7 @@ import { Text, View, Button, Platform } from 'react-native';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 
+// configuring notification settings
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
@@ -59,6 +60,7 @@ export default function App() {
   );
 }
 
+// scheduling notification, on click of a button
 async function schedulePushNotification() {
   await Notifications.scheduleNotificationAsync({
     content: {

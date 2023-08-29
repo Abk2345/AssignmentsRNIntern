@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
+// task component, which will be needed to be repeated in home page on addition of tasks
 const Task = (props) => {
 
   return (

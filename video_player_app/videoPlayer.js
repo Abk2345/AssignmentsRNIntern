@@ -109,6 +109,7 @@ const VideoListScreen = ({ navigation }) => {
     );
 };
 
+
 // creating a video player for playing online videos in the app, shows a list and then on press, plays the given video
 // import React, { useState } from 'react';
 // import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet } from 'react-native';

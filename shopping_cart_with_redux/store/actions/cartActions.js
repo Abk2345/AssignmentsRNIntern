@@ -1,4 +1,4 @@
-// store/actions/cartActions.js
+// adding and removing items from cart using dispatch action functions
 export const addItemToCart = (item) => {
   return {
     type: 'ADD_ITEM',

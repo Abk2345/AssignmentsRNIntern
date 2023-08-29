@@ -1,4 +1,4 @@
-// store/reducers/cartReducer.js
+// reducers for the cart items, implementation of dispatch actions
 const initialState = {
   items: [],
 };

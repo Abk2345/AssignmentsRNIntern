@@ -5,6 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store';
 import { addItemToCart, removeItemFromCart } from './store/actions/cartActions.js';
 
+// ui for the cart with update functionalities like add item and remove item
 const App = () => {
   const cartItems = store.getState().cart.items;
 

@@ -1,3 +1,4 @@
+// importing necessary modules
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, FlatList, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,6 +10,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
+      {/* setting up configuration for the stack navigator, with header */}
       <Stack.Navigator
         initialRouteName="Notifications"
         screenOptions={{
@@ -24,6 +26,7 @@ export default function App() {
           },
         }}
       >
+        {/* Three screens, required for the app */}
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Notifications" component={NotificationsScreen} />
         <Stack.Screen name="Order" component={OrderScreen} />
@@ -32,6 +35,7 @@ export default function App() {
   );
 }
 
+// Homepage, through which simulation of notification would be done
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -41,6 +45,7 @@ function HomeScreen({ navigation }) {
   );
 }
 
+// To show all the recieved notification, further modification may include, changing the bg color of read notifications, and options to delete them from the app memory data
 function NotificationsScreen({ navigation }) {
   const [notifications, setNotifications] = useState([]);
 
@@ -82,6 +87,7 @@ function NotificationsScreen({ navigation }) {
   );
 }
 
+// Each notification will for now navigate to this static order screen
 function OrderScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
